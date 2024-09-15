@@ -9,7 +9,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddRefitClient<IBlogApi>()
-    .ConfigureHttpClient(c => c.BaseAddress = new Uri("https://jsonplaceholder.typicode.com"));
+    .ConfigureHttpClient(c => c.BaseAddress = new Uri(builder.Configuration.GetSection("UrlBase").Get<string>()));
 
 // Using Newtonsoft.Json for serialization:
 //builder.Services.AddRefitClient<IBlogApi>(new RefitSettings

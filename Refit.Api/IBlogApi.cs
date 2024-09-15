@@ -2,7 +2,7 @@ using Refit;
 
 public interface IBlogApi
 {
-    [Get("/posts/{id}")]
+        [Get("/posts/{id}")]
     Task<Post> GetPostAsync(int id);
 
     [Get("/posts")]
@@ -17,6 +17,9 @@ public interface IBlogApi
     [Delete("/posts/{id}")]
     Task DeletePostAsync(int id);
 
+    // uses an object to represent query parameters. This approach is excellent 
+    // for endpoints with many optional parameters. Refit will automatically 
+    // convert this object into a query string
     [Get("/posts")]
     Task<List<Post>> GetPostsAsync([Query] PostQueryParameters parameters);
 }
